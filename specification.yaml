@@ -10,4 +10,85 @@ specification:
     - update
     - delete
     - snapshot
-    - truncate
+    - truncate 
+    
+  fields:
+    - id: metadata
+      type: object
+      required: true
+      fields:
+        - id: correlation_id
+          type: string
+          required: false
+        - id: trace_id
+          type: string
+          required: false
+        - id: producer
+          type: string
+          required: false
+        - id: snapshot_reason
+          type: enum
+          required: false
+          values:
+            - initial_load
+            - recovery
+            - backfill
+            - manual
+        - id: extensions
+          type: object
+          required: false
+          additional_properties: true
+
+    - id: source
+      type: object
+      required: true
+      fields:
+        - id: system
+          type: string
+          required: true
+        - id: instance
+          type: string
+          required: true
+        - id: entity
+          type: string
+          required: true
+
+    - id: entity_key
+      type: object
+      required: true
+      additional_properties: true
+
+    - id: operation
+      type: enum
+      required: true
+      values:
+        - create
+        - update
+        - delete
+        - snapshot
+        - truncate
+
+    - id: before
+      type: object
+      required: false
+      additional_properties: true
+
+    - id: after
+      type: object
+      required: false
+      additional_properties: true
+
+    - id: source_position
+      type: object
+      required: false
+      additional_properties: true
+
+    - id: event_timestamp
+      type: timestamp
+      required: true
+
+    - id: event_version
+      type: string
+      required: false
+
+  
