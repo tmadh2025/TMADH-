@@ -1,0 +1,13 @@
+version: "0.1.0"
+
+metadata:
+  name: TMADH Canonical CDC Specification
+  status: draft
+
+  
+  operations:
+  - create
+  - update
+  - delete
+  - snapshot
+  - truncate
